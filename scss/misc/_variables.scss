@@ -1,0 +1,40 @@
+// Barlow 600 & Fraunces 700, 900 font family
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@600&family=Fraunces:opsz,wght@9..144,700;9..144,900&display=swap');
+
+$fraunces: 'Fraunces', serif;
+$barlow: 'Barlow', sans-serif;
+
+$font-weight: (
+    semi-bold: 600,
+    bold: 700,
+    black: 900
+);
+
+$primary-colors: (
+    "soft-red": hsl(7, 99%, 70%),
+    "yellow": hsl(51, 100%, 49%),
+    "dark-cyan": hsl(167, 40%, 24%),
+    "dark-blue": hsl(198, 62%, 26%),
+    "dark-mod-cyan": hsl(167, 44%, 70%),
+    "header-bg": hsl(200, 99%, 62%)
+);
+
+$neutral-colors: (
+    "dark-cyan": hsl(167, 40%, 24%),
+    "very-dark-blue": hsl(212, 27%, 19%),
+    "darker-blue": hsl(213, 9%, 39%),
+    "dark-blue": hsl(232, 10%, 55%),
+    "grayish-blue": hsl(210, 4%, 67%),
+    "white": hsl(0, 0%, 100%),
+    "black": hsl(0, 0%, 0%)
+);
+
+.hidden {
+    display: none;
+}
+
+@keyframes bounce {
+    0% {transform: translateY(1rem);}
+    50% {transform: translateY(0rem);}
+    100% {transform: translateY(1rem);}
+}

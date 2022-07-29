@@ -1,0 +1,294 @@
+// Features
+
+.features {
+    .feature {
+        img {
+            width: 100%;
+        }
+    
+        &__text {
+            text-align: center;
+            margin: 6rem 0;
+            position: relative;
+    
+            h2, p {
+                padding: 0 2rem;
+                margin: 3rem 0;
+            }
+        
+            h2 {
+                @include font($fraunces, 5em, "very-dark-blue", black);
+            }
+        
+            p {
+                @include font($barlow, 3em, "dark-blue", $line-h: 3rem);
+            }
+        
+            a {
+                @include font($fraunces, 2.4em, "very-dark-blue", black);
+            
+                &::before {
+                    content: '';
+                    background-color: hsla(51, 100%, 60%, 0.30);
+                    position: absolute;
+                    @include size(11rem, .8rem);
+                    border-radius: .4rem;
+                    z-index: -1;
+                    bottom: 0;
+                    transition: all .1s ease-in;
+                }
+            
+                &:hover {
+                    &::before {
+                        background-color: hsla(51, 100%, 60%, 1);
+                    }
+                }
+            }
+        }
+
+        &:nth-child(2) a {
+            &::before {
+                background-color: hsla(0, 100%, 80%, 0.4);
+            }
+
+            &:hover {
+                &::before {
+                    background-color: hsla(0, 100%, 70%, 1);
+                }
+            }
+        }
+
+        &:nth-child(n+3) {
+            max-height: 880px;
+            overflow: hidden;
+            position: relative;
+
+            .feature__text {
+                position: absolute;
+                bottom: 4rem;
+                margin: 6rem auto 0;
+                width: 100%;
+
+                h2, p {
+                    color: rgba($color: #000000, $alpha: .6);
+                }
+
+                h2 {
+                    font-size: 5em;
+                }
+
+                p {
+                    font-size: 2.6em;
+                    line-height: 2.5rem;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .features {
+        .feature {
+            &:nth-child(-n+2) {
+                @include flex(row-reverse, $align-i: center);
+                width: 100%;
+                max-height: 776px;
+
+                .feature__text {
+                    width: 50%;
+                    margin: 0;
+
+                    h2 {
+                        margin: 0;
+                    }
+
+                    p {
+                        margin: 2rem 0;
+                    }
+
+                    a {
+                        font-size: 3em;
+                        letter-spacing: .1rem;
+
+                        &::before {
+                            width: 14rem;
+                        }
+                    }
+                }
+                
+                picture {
+                    width: 50%;
+
+                    img {
+                        width: 100%;
+                        max-height: 776px;
+                        height: 100%;
+                    }
+                }
+            }
+
+            &:nth-child(2) {
+                flex-direction: row;
+            }
+
+            &:nth-child(n+3) {
+                @include size(50%, auto);
+                float: left;
+
+                .feature__text {
+                    bottom: 0;
+
+                    h2 {
+                        font-size: 4em;
+                        margin: 1rem auto;
+                    }
+
+                    p {
+                        @include center();
+                        font-size: 2.4em;
+                        width: 38rem;
+                        margin: 0 auto 1rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .features {
+        .feature {
+            &:nth-child(n+3) {
+                .feature__text {
+                    bottom: 10%;
+                    
+                    h2 {
+                        font-size: 5em;
+                    }
+
+                    p {
+                        font-size: 2.6em;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Testimonials
+
+.testimonial {
+    width: 100%;
+    overflow: hidden;
+
+    .container {
+        @include grid(1, 4, 100%, auto, $row-gap: 6rem);
+        justify-items: center;
+    }
+
+    &__title {
+        @include font($fraunces, 2.6em, "grayish-blue", $align: center, $letter-s: .3rem);
+        margin: 6rem 0 5rem;
+    }
+
+    &__item {
+        @include flex(column, $align-i: center);
+        width: 100%;
+
+        &--picture {
+            @include size(7.5rem, auto);
+            border-radius: 50%;
+        }
+
+        &--text {
+            @include font($barlow, 3em, "darker-blue", $align: center, $line-h: 2.8rem);
+            margin: 4rem 0;
+            padding: 0 1.5rem;
+        }
+        
+        &--name {
+            @include font($fraunces, 2.6em, "very-dark-blue", black);
+            margin-bottom: 1rem;
+        }
+
+        &--profession {
+            @include font($barlow, 2.4em, "grayish-blue");
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .testimonial {
+        .container {
+            @include grid(4, 1, 33%, auto, $col-gap: .5rem);
+            justify-items: center;
+        }
+
+        &__title {
+            margin: 6rem 0;
+        }
+    }
+}
+
+// Gallery
+
+.gallery {
+    @include flex();
+    flex-wrap: wrap;
+    margin-top: 6rem;
+
+    &__item {
+        width: 50%;
+
+        img {
+            width: 100%;
+        }
+            
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .gallery {
+        &__item {
+            width: 25%;
+        }
+    }
+}
+
+// Footer 
+
+.footer {
+    @include flex(column, $align-i: center, $gap: 4rem);
+    background-color: map-get($primary-colors, "dark-mod-cyan");
+
+    &__logo {
+        filter: invert(27%) sepia(9%) saturate(2449%) hue-rotate(134deg) brightness(50%) contrast(50%);
+        transform: scale(1.4);
+        margin-top: 6rem;
+    }
+
+    &__item {
+        @include flex();
+
+        &:first-of-type {
+            gap: 6rem;
+        }
+
+        &:last-of-type {
+            gap: 3rem;
+        }
+    }
+
+    &__section {
+        @include font($barlow, 3em, "dark-cyan", "bold");
+    }
+
+    &__social-media {
+        font-size: 4em;
+        margin: 5rem 0 8rem;
+
+        &--item {
+            color: map-get($neutral-colors, "dark-cyan");
+        }
+    }
+}

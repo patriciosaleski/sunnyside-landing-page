@@ -1,0 +1,180 @@
+body header {
+    height: 77vh;
+    background: map-get($primary-colors, "header-bg") url('../../images/desktop/image-header.jpg') no-repeat bottom;
+    background-size: 75%;
+    display: flex;
+    flex-direction: column;
+
+    h1 {
+        @include font($fraunces, 6em, "white", black, $align: center, $letter-s: .8rem);
+        margin-top: 5rem;
+    }
+
+    nav {
+        @include flex($justify-c: space-between);
+        @include center();
+        width: 100%;
+        flex-wrap: wrap;
+        padding: 3rem 2rem;
+
+        .navbar {
+            &__logo {
+                @include size(120px, 25px);
+            }
+
+            &__menu {
+                @include flex($align-i: baseline, $gap: 2rem);
+
+                &--item {
+                    a {
+                        transition: all .2s ease-out;
+
+                        &:hover {
+                            transition: all .2s ease-in;
+                        }
+                    }
+
+                    &:nth-child(-n+3) {
+
+                        a {
+                            @include font($barlow, 2.4em, "white");
+                            padding: 1rem 1.5rem;
+                            border-radius: 2rem;
+
+                            &:hover {
+                                transition: all .2s ease-in;
+                                background-color: rgba($color: white, $alpha: .4);
+                            }
+                        }
+                    }
+
+                    &:nth-child(4) a {
+                        @include font($fraunces, 2.2em, "black");
+                        
+                            background-color: map-get($neutral-colors, "white");
+                            padding: 1.5rem 2rem;
+                            border-radius: 3rem;
+
+                            &:hover {
+                                background-color: rgba($color: white, $alpha: .2);
+                                color: map-get($neutral-colors , "white");
+                            }
+                        
+                    }
+
+                    &:last-child {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    .arrow {
+        @include center();
+        margin-top: 5rem;
+        animation: bounce 3s infinite;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    body header {
+        background-image: url('../../images/mobile/image-header.jpg');
+        background-size: 100% 100%;
+        nav {
+            .navbar {
+                &__menu {
+                    &--item {
+                        &:last-child {
+                            display: block;
+                        }
+                    
+                        .hamburger {
+                            &__icon {
+                                position: relative;
+                                @include size(30px, 30px);
+                            
+                                div {
+                                    @include size(30px, 2px);
+                                    background: map-get($neutral-colors, "white");
+                                    position: relative;
+                                    top: 10px;
+                                
+                                    &::after, &::before {
+                                        @include size(100%, 2px);
+                                        content: '';
+                                        position: absolute;
+                                        top: -10px;
+                                        background: map-get($neutral-colors, "white");
+                                    }
+                                
+                                    &::after {
+                                        top: 10px;
+                                    }
+                                }
+                            }
+                        
+                            &__menu {
+                                position: absolute;
+                                right: 10%;
+                                top: 100px;
+                                width: 80%;
+                                max-width: 35rem;
+                                background-color: map-get($neutral-colors, "white");
+                                text-align: center;
+                                padding: 2.4rem 0;
+                                z-index: 2;
+                            
+                                &::before {
+                                    @include size(30px, 30px);
+                                    content: '';
+                                    display: block;
+                                    position: absolute;
+                                    border-left: transparent solid 30px;
+                                    border-bottom: map-get($neutral-colors, "white") solid 30px;
+                                    right: 0;
+                                    top: -30px;
+                                }
+                            
+                                li {
+                                    a {
+                                        @include center();
+                                        color: map-get($neutral-colors, "dark-blue");
+                                        display: block;
+                                        padding: 1.5rem .5rem;
+                                        width: 15rem;
+                                        border-radius: 3rem;
+                                        transition: all .2s ease-out;
+                                    
+                                        &:hover {
+                                            transition: all .1s ease-in;
+                                            background-color: rgba($color: yellow, $alpha: .1);
+                                        }
+                                    }
+                                
+                                    &:not(:last-child) {
+                                        @include font($barlow, 3em);
+                                    }
+                                
+                                    &:last-child a {
+                                        @include font($fraunces, 2.5em, "black");
+                                        background-color: map-get($primary-colors, "yellow");
+                                        margin-top: 2rem;
+
+                                        &:hover {
+                                            transform: scale(1.2);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    
+                        &:not(:last-child) {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
